@@ -3,15 +3,12 @@
 #include<windows.h>
 #include<fstream>
 using namespace std;
-//създавам структура student със следните параметри:
 struct student {
-	//данни за студента
 	string specialnost;
 	string ime;
 	string faknomer;
 	int godina;
 	int mesec;
-	//оценки по мат бп физическо уеб и електроника , както и среден успех
 	double mat;
 	double bp;
 	double fiz;
@@ -25,35 +22,31 @@ struct student {
 
 
 };
-//фунцкия за избор на номер от менюто
 int entry();
-//въвеждане на 1 студент
 void enterOneStudent(int& i, int& k, student studSIT[], student studKST[]);
-//въвеждане на произволен брой студенти
 void enterManyStudents(int& i, int& k, student studSIT[], student studKST[]);
-//извеждане на студенти по въведена специалност
 void output(int i, int k, student studSIT[], student studKST[]);
-//извеждане на студенти със отличен по БП
+
 void outputWith6poBP(int i, int k, student studSIT[], student studKST[]);
-//извеждане на студенти, подредени по възраст
+
 void outputpovuzrast(int i, int k, student studSIT[], student studKST[]);
-//извеждане на най-добрия студент от КСТ И СИТ
+
 void outputNaiDoburStudent(int i, int k, student studSIT[], student studKST[]);
-//фунцкия за вкарване на данните от програмата във файл
+
 void save(int i, int k, student studSIT[], student studKST[]);
-//фунцкция за вкарване на данните от файла в програмта
+
 void fromFile(int& i, int& k, student studSIT[], student studKST[]);
-//извеждане на студенти с уraспех над 5.50
+
 void outputUspehNad5i50(int i, int k, student studSIT[], student studKST[]);
-//извеждане на студенти, подредени по успех
+
 void outputpouspeh(int i, int k, student studSIT[], student studKST[]);
-//създаване на отделните групи от дадена специалност
+
 void razpredelenieVGrupa(int i, int k, student SIT[][5], student KST[][5], student studSIT[], student studKST[], int& grupiSIT, int& grupiKST);
-//размяна на групите на 2 студента, след въвеждане на фак. номера
+
 void razmqnaNaGrupi(int i, int k, student SIT[][5], student KST[][5], student studSIT[], student studKST[]);
-//извеждане на студентите по групи
+
 void grupiOutput(int i, int k, student SIT[][5], student KST[][5], student studSIT[], student studKST[], int grupiSIT, int grupiKST);
-//изтриване на студент от група след въвеждането на фак. номер
+
 void iztrivaneNaStudent(int& i, int& k, student SIT[][5], student KST[][5], student studSIT[], student studKST[], int grupiSIT, int grupiKST);
 void savebinary(int i, int k, student studSIT[], student studKST[]);
 
@@ -62,22 +55,22 @@ int main() {
 	SetConsoleOutputCP(1251);
 	SetConsoleCP(1251);
 
-	//променлива за броя студенти въведени от спец. СИТ
+
 	int i = 0;
-	//променлива за броя студенти въведени от спец. КСТ
+
 	int k = 0;
-	//променлива за колко групи са създадени от СИТ
+
 	int grupiSIT = 0;
-	//променлива за колко групи са създадени от СИТ
+
 	int grupiKST = 0;
-	//масиви от структурата student
-	//първите два са за отделните групи - може да има макс. 5 студента в група и макс 30/5=6 групи.
+
+
 	student SIT[6][5];
 	student KST[6][5];
-	//вторите служат за пазене на данните за всички студенти от двете специалности (макс 30)
+
 	student studSIT[30];
 	student studKST[30];
-	//нулирам всички полета от масивите от структурата с тип double и int,  защото default стойностите им не са 0
+
 	for (int y = 0; y < 30; y++) {
 
 		studSIT[y].godina = 0;
@@ -119,33 +112,33 @@ int main() {
 		}
 	}
 
-	//правя така, че менюто да се изкарва винаги след стартиране на програмата, както и след като дадено действие е завършило изпълнението си.
+
 	while (true) {
 		cout << endl;
-		cout << "Въведете:" << endl;
-		cout << "1 за добавяне на един студент." << endl;
-		cout << "2 за добавяне на n на брой студенти." << endl;
-		cout << "3 за извеждане на студенти от дадена специалност." << endl;
-		cout << "4 за извеждане на студенти с Отличен по БП." << endl;
-		cout << "5 за създаване на групите от студенти." << endl;
-		cout << "За опции 6,7 и 8 първо създайте групите чрез опция 5" << endl;
-		cout << "6 за размяна на групите на двама студенти." << endl;
-		cout << "7 за изтриване на студент" << endl;
-		cout << "8 за извеждане на студентите по групи." << endl;
-		cout << "9 за извеждане на студентите, подредени по среден успех." << endl;
-		cout << "10 за извеждане на студентите, подредени по възраст в месеци." << endl;
-		cout << "11 за извеждане на студентите с най-добър среден успех от КСТ и СИТ." << endl;
-		cout << "12 за извеждане на студентите с успех над 5.50." << endl;
-		cout << "13 за запазване на данните във файл." << endl;
-		cout << "14 за вкарване на данните от файла в програмата " << endl;
-		cout << "15 за излизане от програмата." << endl;
-		//записвам въведеното число в променлива
+		cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ:" << endl;
+		cout << "1 Г§Г  Г¤Г®ГЎГ ГўГїГ­ГҐ Г­Г  ГҐГ¤ГЁГ­ Г±ГІГіГ¤ГҐГ­ГІ." << endl;
+		cout << "2 Г§Г  Г¤Г®ГЎГ ГўГїГ­ГҐ Г­Г  n Г­Г  ГЎГ°Г®Г© Г±ГІГіГ¤ГҐГ­ГІГЁ." << endl;
+		cout << "3 Г§Г  ГЁГ§ГўГҐГ¦Г¤Г Г­ГҐ Г­Г  Г±ГІГіГ¤ГҐГ­ГІГЁ Г®ГІ Г¤Г Г¤ГҐГ­Г  Г±ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ." << endl;
+		cout << "4 Г§Г  ГЁГ§ГўГҐГ¦Г¤Г Г­ГҐ Г­Г  Г±ГІГіГ¤ГҐГ­ГІГЁ Г± ГЋГІГ«ГЁГ·ГҐГ­ ГЇГ® ГЃГЏ." << endl;
+		cout << "5 Г§Г  Г±ГєГ§Г¤Г ГўГ Г­ГҐ Г­Г  ГЈГ°ГіГЇГЁГІГҐ Г®ГІ Г±ГІГіГ¤ГҐГ­ГІГЁ." << endl;
+		cout << "Г‡Г  Г®ГЇГ¶ГЁГЁ 6,7 ГЁ 8 ГЇГєГ°ГўГ® Г±ГєГ§Г¤Г Г©ГІГҐ ГЈГ°ГіГЇГЁГІГҐ Г·Г°ГҐГ§ Г®ГЇГ¶ГЁГї 5" << endl;
+		cout << "6 Г§Г  Г°Г Г§Г¬ГїГ­Г  Г­Г  ГЈГ°ГіГЇГЁГІГҐ Г­Г  Г¤ГўГ Г¬Г  Г±ГІГіГ¤ГҐГ­ГІГЁ." << endl;
+		cout << "7 Г§Г  ГЁГ§ГІГ°ГЁГўГ Г­ГҐ Г­Г  Г±ГІГіГ¤ГҐГ­ГІ" << endl;
+		cout << "8 Г§Г  ГЁГ§ГўГҐГ¦Г¤Г Г­ГҐ Г­Г  Г±ГІГіГ¤ГҐГ­ГІГЁГІГҐ ГЇГ® ГЈГ°ГіГЇГЁ." << endl;
+		cout << "9 Г§Г  ГЁГ§ГўГҐГ¦Г¤Г Г­ГҐ Г­Г  Г±ГІГіГ¤ГҐГ­ГІГЁГІГҐ, ГЇГ®Г¤Г°ГҐГ¤ГҐГ­ГЁ ГЇГ® Г±Г°ГҐГ¤ГҐГ­ ГіГ±ГЇГҐГµ." << endl;
+		cout << "10 Г§Г  ГЁГ§ГўГҐГ¦Г¤Г Г­ГҐ Г­Г  Г±ГІГіГ¤ГҐГ­ГІГЁГІГҐ, ГЇГ®Г¤Г°ГҐГ¤ГҐГ­ГЁ ГЇГ® ГўГєГ§Г°Г Г±ГІ Гў Г¬ГҐГ±ГҐГ¶ГЁ." << endl;
+		cout << "11 Г§Г  ГЁГ§ГўГҐГ¦Г¤Г Г­ГҐ Г­Г  Г±ГІГіГ¤ГҐГ­ГІГЁГІГҐ Г± Г­Г Г©-Г¤Г®ГЎГєГ° Г±Г°ГҐГ¤ГҐГ­ ГіГ±ГЇГҐГµ Г®ГІ ГЉГ‘Г’ ГЁ Г‘Г€Г’." << endl;
+		cout << "12 Г§Г  ГЁГ§ГўГҐГ¦Г¤Г Г­ГҐ Г­Г  Г±ГІГіГ¤ГҐГ­ГІГЁГІГҐ Г± ГіГ±ГЇГҐГµ Г­Г Г¤ 5.50." << endl;
+		cout << "13 Г§Г  Г§Г ГЇГ Г§ГўГ Г­ГҐ Г­Г  Г¤Г Г­Г­ГЁГІГҐ ГўГєГў ГґГ Г©Г«." << endl;
+		cout << "14 Г§Г  ГўГЄГ Г°ГўГ Г­ГҐ Г­Г  Г¤Г Г­Г­ГЁГІГҐ Г®ГІ ГґГ Г©Г«Г  Гў ГЇГ°Г®ГЈГ°Г Г¬Г ГІГ  " << endl;
+		cout << "15 Г§Г  ГЁГ§Г«ГЁГ§Г Г­ГҐ Г®ГІ ГЇГ°Г®ГЈГ°Г Г¬Г ГІГ ." << endl;
+		
 		int entered = entry();
-		//ако е равно на 15 програмата спира
+	
 		if (entered == 15) {
 			break;
 		}
-		//ако е друго число викам функцията, която съответсвта на съотвеното число
+	
 		switch (entered) {
 		case 1:enterOneStudent(i, k, studSIT, studKST);
 			break;
@@ -177,22 +170,22 @@ int main() {
 
 	return 0;
 }
-//изтриване на студент от група- вкарвам във ф-ята i и k по локация, за да може като ги променям да се променят стойностите им в цялата програма, а не само копията им
-//вкарвам масивите от структура за групите и за всички студенти, както и броя групи които са запълнение за двете специалности
+
+
 void iztrivaneNaStudent(int& i, int& k, student SIT[][5], student KST[][5], student studSIT[], student studKST[], int grupiSIT, int grupiKST) {
 	string spec;
-	//въвежда се специалност, от която ще се трие
-	cout << "Въведете специалност, от която ще изтривате студент: " << endl;
+	
+	cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г±ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ, Г®ГІ ГЄГ®ГїГІГ® Г№ГҐ ГЁГ§ГІГ°ГЁГўГ ГІГҐ Г±ГІГіГ¤ГҐГ­ГІ: " << endl;
 	cin >> spec;
-	if (spec == "СИТ") {
+	if (spec == "Г‘Г€Г’") {
 
-		cout << "Въведете фак. номер на студента: " << endl;
+		cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ ГґГ ГЄ. Г­Г®Г¬ГҐГ° Г­Г  Г±ГІГіГ¤ГҐГ­ГІГ : " << endl;
 		string fakn;
 		cin >> fakn;
-		//декларирам две променливи, които показват индексите на двумерния масив
+
 		int index1 = -1;
 		int index2 = -1;
-		//проверявам за всички студенти от всички групи дали някой има същия фак. номер и като го намеря спирам цикъла
+
 		for (int y1 = 0; y1 < grupiSIT; y1++) {
 			for (int y = 0; y < 5; y++) {
 				if (SIT[y1][y].faknomer == fakn) {
@@ -204,9 +197,9 @@ void iztrivaneNaStudent(int& i, int& k, student SIT[][5], student KST[][5], stud
 			}
 		}
 
-		//ако е намерен, index1 вече няма да е -1, а ще е >=0
+		
 		if (index1 >= 0) {
-			//трия студента, като записвам във всеки студент след него, включително и него, следващия студент по ред ( така изтрития студент се заличава и всички останали се преместват с позиция наляво)
+
 
 			for (int y = index2; y <= 4; y++) {
 				if (y < 4) {
@@ -233,7 +226,7 @@ void iztrivaneNaStudent(int& i, int& k, student SIT[][5], student KST[][5], stud
 			}
 
 
-			//понеже след като студент се изтрие от група, той трябва да се изтрие и от целия поток, за да бъдат правилно създадени групите
+			//ГЇГ®Г­ГҐГ¦ГҐ Г±Г«ГҐГ¤ ГЄГ ГІГ® Г±ГІГіГ¤ГҐГ­ГІ Г±ГҐ ГЁГ§ГІГ°ГЁГҐ Г®ГІ ГЈГ°ГіГЇГ , ГІГ®Г© ГІГ°ГїГЎГўГ  Г¤Г  Г±ГҐ ГЁГ§ГІГ°ГЁГҐ ГЁ Г®ГІ Г¶ГҐГ«ГЁГї ГЇГ®ГІГ®ГЄ, Г§Г  Г¤Г  ГЎГєГ¤Г ГІ ГЇГ°Г ГўГЁГ«Г­Г® Г±ГєГ§Г¤Г Г¤ГҐГ­ГЁ ГЈГ°ГіГЇГЁГІГҐ
 			int index = -1;
 			for (int y = 0; y < i; y++) {
 				if (studSIT[y].faknomer == fakn) {
@@ -241,7 +234,7 @@ void iztrivaneNaStudent(int& i, int& k, student SIT[][5], student KST[][5], stud
 					break;
 				}
 			}
-			//правя същото като с групите
+			
 			for (int y = index; y <= i - 1; y++) {
 				if (y == 29) {
 					studSIT[y].specialnost = "";
@@ -261,7 +254,7 @@ void iztrivaneNaStudent(int& i, int& k, student SIT[][5], student KST[][5], stud
 				}
 
 			}
-			//свалям броя на студентите в потока с 1
+		
 			i--;
 
 			if (SIT[index1][4].mesec == 0 && SIT[index1][3].mesec == 0) {
@@ -293,7 +286,7 @@ void iztrivaneNaStudent(int& i, int& k, student SIT[][5], student KST[][5], stud
 
 
 		else {
-			cout << "Моля въведете 7 отново и след това въведете ВАЛИДЕН фак.номер." << endl;
+			cout << "ГЊГ®Г«Гї ГўГєГўГҐГ¤ГҐГІГҐ 7 Г®ГІГ­Г®ГўГ® ГЁ Г±Г«ГҐГ¤ ГІГ®ГўГ  ГўГєГўГҐГ¤ГҐГІГҐ Г‚ГЂГ‹Г€Г„Г…ГЌ ГґГ ГЄ.Г­Г®Г¬ГҐГ°." << endl;
 
 
 		}
@@ -309,16 +302,16 @@ void iztrivaneNaStudent(int& i, int& k, student SIT[][5], student KST[][5], stud
 	}
 
 
-	//същото правя и за специалност КСТ
-	else if (spec == "КСТ") {
+	//Г±ГєГ№Г®ГІГ® ГЇГ°Г ГўГї ГЁ Г§Г  Г±ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ ГЉГ‘Г’
+	else if (spec == "ГЉГ‘Г’") {
 
-		cout << "Въведете фак. номер на студента: " << endl;
+		cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ ГґГ ГЄ. Г­Г®Г¬ГҐГ° Г­Г  Г±ГІГіГ¤ГҐГ­ГІГ : " << endl;
 		string fakn;
 		cin >> fakn;
-		//декларирам две променливи, които показват индексите на двумерния масив
+		
 		int index1 = -1;
 		int index2 = -1;
-		//проверявам за всички студенти от всички групи дали някой има същия фак. номер и като го намеря спирам цикъла
+		
 		for (int y1 = 0; y1 < grupiKST; y1++) {
 			for (int y = 0; y < 5; y++) {
 				if (KST[y1][y].faknomer == fakn) {
@@ -330,9 +323,9 @@ void iztrivaneNaStudent(int& i, int& k, student SIT[][5], student KST[][5], stud
 			}
 		}
 
-		//ако е намерен, index1 вече няма да е -1, а ще е >=0
+		
 		if (index1 >= 0) {
-			//трия студента, като записвам във всеки студент след него, включително и него, следващия студент по ред ( така изтрития студент се заличава и всички останали се преместват с позиция наляво)
+		
 
 			for (int y = index2; y <= 4; y++) {
 				if (y < 4) {
@@ -359,7 +352,7 @@ void iztrivaneNaStudent(int& i, int& k, student SIT[][5], student KST[][5], stud
 			}
 
 
-			//понеже след като студент се изтрие от група, той трябва да се изтрие и от целия поток, за да бъдат правилно създадени групите
+		
 			int index = -1;
 			for (int y = 0; y < k; y++) {
 				if (studKST[y].faknomer == fakn) {
@@ -367,7 +360,7 @@ void iztrivaneNaStudent(int& i, int& k, student SIT[][5], student KST[][5], stud
 					break;
 				}
 			}
-			//правя същото като с групите
+		
 			for (int y = index; y <= k - 1; y++) {
 				if (y == 29) {
 					studSIT[y].specialnost = "";
@@ -387,7 +380,7 @@ void iztrivaneNaStudent(int& i, int& k, student SIT[][5], student KST[][5], stud
 				}
 
 			}
-			//свалям броя на студентите в потока с 1
+			
 			k--;
 
 			if (KST[index1][4].mesec == 0 && KST[index1][3].mesec == 0) {
@@ -414,20 +407,20 @@ void iztrivaneNaStudent(int& i, int& k, student SIT[][5], student KST[][5], stud
 		}
 
 		else {
-			cout << "Моля въведете 7 отново и след това въведете ВАЛИДЕН фак.номер." << endl;
+			cout << "ГЊГ®Г«Гї ГўГєГўГҐГ¤ГҐГІГҐ 7 Г®ГІГ­Г®ГўГ® ГЁ Г±Г«ГҐГ¤ ГІГ®ГўГ  ГўГєГўГҐГ¤ГҐГІГҐ Г‚ГЂГ‹Г€Г„Г…ГЌ ГґГ ГЄ.Г­Г®Г¬ГҐГ°." << endl;
 
 
 		}
 
 	}
-	//ако не е въведен нито КСТ, нито СИТ  изписва това съобщение
+	
 	else {
-		cout << "Моля въведете 7 отново и след това въведете ВАЛИДНА  специалност." << endl;
+		cout << "ГЊГ®Г«Гї ГўГєГўГҐГ¤ГҐГІГҐ 7 Г®ГІГ­Г®ГўГ® ГЁ Г±Г«ГҐГ¤ ГІГ®ГўГ  ГўГєГўГҐГ¤ГҐГІГҐ Г‚ГЂГ‹Г€Г„ГЌГЂ  Г±ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ." << endl;
 
 
 	}
 
-	//викам функцията за разпределение в група, за да може да се разпределят студентите в групите по павилата в условието
+	
 
 
 
@@ -439,41 +432,41 @@ void iztrivaneNaStudent(int& i, int& k, student SIT[][5], student KST[][5], stud
 }
 
 
-//извеждане на студентите по групи
+
 void grupiOutput(int i, int k, student SIT[][5], student KST[][5], student studSIT[], student studKST[], int grupiSIT, int grupiKST) {
-	//ако има студенти от СИТ
+	
 
 	if (i > 0) {
-		cout << "Специалност СИТ: " << endl;
-		//цикъл въртящ групите
+		cout << "Г‘ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ Г‘Г€Г’: " << endl;
+	
 		for (int y1 = 0; y1 < grupiSIT; y1++) {
-			//извежда се номера на групата
-			cout << "Група " << y1 + 1 << endl;
+		
+			cout << "ГѓГ°ГіГЇГ  " << y1 + 1 << endl;
 			cout << endl;
-			//цикъл въртящ студентите в дадена група
+		
 			for (int y = 0; y < 5; y++) {
-				//понеже полетата на студентите са нулирани, ако студента на съществува, то за съществуващ студент полето за месец със сигурност няма да е 0
-				//затова извеждам само студентите, на които не им е 0 полето за месеца
-				//извеждам студентите поле по поле
+		
+		
+		
 				if (SIT[y1][y].mesec != 0) {
-					cout << "Студент " << y + 1 << endl;
-					cout << "Специалност:";
+					cout << "Г‘ГІГіГ¤ГҐГ­ГІ " << y + 1 << endl;
+					cout << "Г‘ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ:";
 					cout << SIT[y1][y].specialnost << endl;
-					cout << "Име и фамилия:";
+					cout << "Г€Г¬ГҐ ГЁ ГґГ Г¬ГЁГ«ГЁГї:";
 					cout << SIT[y1][y].ime << endl;
-					cout << "Факултетен номер:";
+					cout << "Г”Г ГЄГіГ«ГІГҐГІГҐГ­ Г­Г®Г¬ГҐГ°:";
 					cout << SIT[y1][y].faknomer << endl;
-					cout << "Месец и година на раждане (формат месец.година):";
+					cout << "ГЊГҐГ±ГҐГ¶ ГЁ ГЈГ®Г¤ГЁГ­Г  Г­Г  Г°Г Г¦Г¤Г Г­ГҐ (ГґГ®Г°Г¬Г ГІ Г¬ГҐГ±ГҐГ¶.ГЈГ®Г¤ГЁГ­Г ):";
 					cout << SIT[y1][y].mesec << "." << SIT[y1][y].godina << endl;
-					cout << "Оценка по математика:";
+					cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® Г¬Г ГІГҐГ¬Г ГІГЁГЄГ :";
 					cout << SIT[y1][y].mat << endl;
-					cout << "Оценка по БП:";
+					cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГЃГЏ:";
 					cout << SIT[y1][y].bp << endl;
-					cout << "Оценка по физическо:";
+					cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГґГЁГ§ГЁГ·ГҐГ±ГЄГ®:";
 					cout << SIT[y1][y].fiz << endl;
-					cout << "Оценка по УЕБ:";
+					cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® Г“Г…ГЃ:";
 					cout << SIT[y1][y].web << endl;
-					cout << "Оценка по електроника:";
+					cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГҐГ«ГҐГЄГІГ°Г®Г­ГЁГЄГ :";
 					cout << SIT[y1][y].el << endl;
 					cout << endl;
 
@@ -486,33 +479,33 @@ void grupiOutput(int i, int k, student SIT[][5], student KST[][5], student studS
 		}
 	}
 
-	//същото правя за КСТ
+	
 	if (k > 0) {
-		cout << "Специалност КСТ: " << endl;
+		cout << "Г‘ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ ГЉГ‘Г’: " << endl;
 
 		for (int y1 = 0; y1 < grupiKST; y1++) {
-			cout << "Група " << y1 + 1 << endl;
+			cout << "ГѓГ°ГіГЇГ  " << y1 + 1 << endl;
 			cout << endl;
 			for (int y = 0; y < 5; y++) {
 				if (KST[y1][y].mesec != 0) {
-					cout << "Студент " << y + 1 << endl;
-					cout << "Специалност:";
+					cout << "Г‘ГІГіГ¤ГҐГ­ГІ " << y + 1 << endl;
+					cout << "Г‘ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ:";
 					cout << KST[y1][y].specialnost << endl;
-					cout << "Име и фамилия:";
+					cout << "Г€Г¬ГҐ ГЁ ГґГ Г¬ГЁГ«ГЁГї:";
 					cout << KST[y1][y].ime << endl;
-					cout << "Факултетен номер:";
+					cout << "Г”Г ГЄГіГ«ГІГҐГІГҐГ­ Г­Г®Г¬ГҐГ°:";
 					cout << KST[y1][y].faknomer << endl;
-					cout << "Месец и година на раждане (формат месец.година):";
+					cout << "ГЊГҐГ±ГҐГ¶ ГЁ ГЈГ®Г¤ГЁГ­Г  Г­Г  Г°Г Г¦Г¤Г Г­ГҐ (ГґГ®Г°Г¬Г ГІ Г¬ГҐГ±ГҐГ¶.ГЈГ®Г¤ГЁГ­Г ):";
 					cout << KST[y1][y].mesec << "." << KST[y1][y].godina << endl;
-					cout << "Оценка по математика:";
+					cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® Г¬Г ГІГҐГ¬Г ГІГЁГЄГ :";
 					cout << KST[y1][y].mat << endl;
-					cout << "Оценка по БП:";
+					cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГЃГЏ:";
 					cout << KST[y1][y].bp << endl;
-					cout << "Оценка по физическо:";
+					cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГґГЁГ§ГЁГ·ГҐГ±ГЄГ®:";
 					cout << KST[y1][y].fiz << endl;
-					cout << "Оценка по УЕБ:";
+					cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® Г“Г…ГЃ:";
 					cout << KST[y1][y].web << endl;
-					cout << "Оценка по електроника:";
+					cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГҐГ«ГҐГЄГІГ°Г®Г­ГЁГЄГ :";
 					cout << KST[y1][y].el << endl;
 					cout << endl;
 
@@ -526,34 +519,34 @@ void grupiOutput(int i, int k, student SIT[][5], student KST[][5], student studS
 
 	}
 }
-//размяна на групите на двама студенти по въведени фак. номера
+
 void razmqnaNaGrupi(int i, int k, student SIT[][5], student KST[][5], student studSIT[], student studKST[]) {
 
 	string purvi, vtori, spec;
 	student help;
-	//понеже може да се сменят групите само на студенти от една и суща специалност, първо тя се въвежда
-	cout << "Въведете от коя специалност са студентите: ";
+	
+	cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г®ГІ ГЄГ®Гї Г±ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ Г±Г  Г±ГІГіГ¤ГҐГ­ГІГЁГІГҐ: ";
 	cin >> spec;
 
-	cout << "Въведете фак. номер на първи студент: ";
-	//въвеждам двата факултетни номера
+	cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ ГґГ ГЄ. Г­Г®Г¬ГҐГ° Г­Г  ГЇГєГ°ГўГЁ Г±ГІГіГ¤ГҐГ­ГІ: ";
+	
 	cin >> purvi;
-	cout << "Въведете фак. номер на втори студент: ";
+	cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ ГґГ ГЄ. Г­Г®Г¬ГҐГ° Г­Г  ГўГІГ®Г°ГЁ Г±ГІГіГ¤ГҐГ­ГІ: ";
 	cin >> vtori;
-	//декларирам двата индекса на двата студента
+	
 	int indexpurvi1 = -1;
 	int indexpurvi2 = -1;
 	int indexvtori1 = -1;
 	int indexvtori2 = -1;
-	//ако въведената специалност е СИТ
-	if (spec == "СИТ") {
+	
+	if (spec == "Г‘Г€Г’") {
 
 
-		//проверява се всеки студент от всяка група
+		
 		for (int y1 = 0; y1 < 6; y1++) {
 			for (int y = 0; y < 5; y++) {
-				//ако се стигне до студент, чийто фак. номер е същия като въведените
-				//индексите му се записват в горезаписаните променливи
+				
+				
 				if (SIT[y1][y].faknomer == purvi) {
 					indexpurvi1 = y1;
 					indexpurvi2 = y;
@@ -568,7 +561,7 @@ void razmqnaNaGrupi(int i, int k, student SIT[][5], student KST[][5], student st
 
 				}
 
-				//ако и двата индексите и на двата студента са най-малко 0 , то значи, че и за двата въведени факултетни номера е намерен студент и се спира търсенето
+				//Г ГЄГ® ГЁ Г¤ГўГ ГІГ  ГЁГ­Г¤ГҐГЄГ±ГЁГІГҐ ГЁ Г­Г  Г¤ГўГ ГІГ  Г±ГІГіГ¤ГҐГ­ГІГ  Г±Г  Г­Г Г©-Г¬Г Г«ГЄГ® 0 , ГІГ® Г§Г­Г Г·ГЁ, Г·ГҐ ГЁ Г§Г  Г¤ГўГ ГІГ  ГўГєГўГҐГ¤ГҐГ­ГЁ ГґГ ГЄГіГ«ГІГҐГІГ­ГЁ Г­Г®Г¬ГҐГ°Г  ГҐ Г­Г Г¬ГҐГ°ГҐГ­ Г±ГІГіГ¤ГҐГ­ГІ ГЁ Г±ГҐ Г±ГЇГЁГ°Г  ГІГєГ°Г±ГҐГ­ГҐГІГ®
 				if (indexpurvi1 >= 0 && indexvtori1 >= 0) {
 					y1 = 6;
 					break;
@@ -578,9 +571,9 @@ void razmqnaNaGrupi(int i, int k, student SIT[][5], student KST[][5], student st
 
 			}
 		}
-		//ако за намерени студенти за двата факултетни номера
+		
 		if (indexpurvi1 >= 0 && indexvtori1 >= 0) {
-			//разменяме данните на двата студента в масивите на групите чрез помощни променливи
+			
 			help = SIT[indexpurvi1][indexpurvi2];
 
 
@@ -594,10 +587,10 @@ void razmqnaNaGrupi(int i, int k, student SIT[][5], student KST[][5], student st
 
 
 
-			//декларирам две променливи, в които ще записвам индексите на студентите в целия поток
+			
 			int index1 = -1;
 			int index2 = -1;
-			//правя същото търсене за целия поток на СИТ
+			
 			for (int y = 0; y < i; y++) {
 				if (studSIT[y].faknomer == purvi) {
 					index1 = y;
@@ -610,22 +603,22 @@ void razmqnaNaGrupi(int i, int k, student SIT[][5], student KST[][5], student st
 					break;
 				}
 			}
-			//слагам данните на втория студент в полетата на първия
+			
 			studSIT[index1] = studSIT[index2];
 
 
-			//вече няма нужда да правя помощни променливи, защото те вече са направени по-горе
+			
 			studSIT[index2] = help;
 
 
 
 
-			cout << "Студентите са разменени успешно" << endl;
+			cout << "Г‘ГІГіГ¤ГҐГ­ГІГЁГІГҐ Г±Г  Г°Г Г§Г¬ГҐГ­ГҐГ­ГЁ ГіГ±ГЇГҐГёГ­Г®" << endl;
 		}
 
-		//ако един или два от факултетните номера, които са въведени не съществуват в масивите, се извежда следното съобщение
+		
 		else {
-			cout << "Моля въведете 6 отново ,след което въведете ВАЛИДНИ факултетни номера" << endl;
+			cout << "ГЊГ®Г«Гї ГўГєГўГҐГ¤ГҐГІГҐ 6 Г®ГІГ­Г®ГўГ® ,Г±Г«ГҐГ¤ ГЄГ®ГҐГІГ® ГўГєГўГҐГ¤ГҐГІГҐ Г‚ГЂГ‹Г€Г„ГЌГ€ ГґГ ГЄГіГ«ГІГҐГІГ­ГЁ Г­Г®Г¬ГҐГ°Г " << endl;
 
 
 		}
@@ -639,8 +632,8 @@ void razmqnaNaGrupi(int i, int k, student SIT[][5], student KST[][5], student st
 
 
 
-	//същото правя и за спец КСТ
-	else if (spec == "КСТ") {
+	
+	else if (spec == "ГЉГ‘Г’") {
 
 
 
@@ -707,14 +700,14 @@ void razmqnaNaGrupi(int i, int k, student SIT[][5], student KST[][5], student st
 
 			studKST[index2] = help;
 
-			cout << "Студентите са разменени успешно" << endl;
+			cout << "Г‘ГІГіГ¤ГҐГ­ГІГЁГІГҐ Г±Г  Г°Г Г§Г¬ГҐГ­ГҐГ­ГЁ ГіГ±ГЇГҐГёГ­Г®" << endl;
 
 		}
 
 
 		else {
 
-			cout << "Моля въведете 6 отново ,след което въведете ВАЛИДНИ факултетни номера" << endl;
+			cout << "ГЊГ®Г«Гї ГўГєГўГҐГ¤ГҐГІГҐ 6 Г®ГІГ­Г®ГўГ® ,Г±Г«ГҐГ¤ ГЄГ®ГҐГІГ® ГўГєГўГҐГ¤ГҐГІГҐ Г‚ГЂГ‹Г€Г„ГЌГ€ ГґГ ГЄГіГ«ГІГҐГІГ­ГЁ Г­Г®Г¬ГҐГ°Г " << endl;
 
 
 		}
@@ -729,7 +722,7 @@ void razmqnaNaGrupi(int i, int k, student SIT[][5], student KST[][5], student st
 
 
 	else {
-		cout << "Моля въведете 6 отново и след това въведете ВАЛИДНА специалност" << endl;
+		cout << "ГЊГ®Г«Гї ГўГєГўГҐГ¤ГҐГІГҐ 6 Г®ГІГ­Г®ГўГ® ГЁ Г±Г«ГҐГ¤ ГІГ®ГўГ  ГўГєГўГҐГ¤ГҐГІГҐ Г‚ГЂГ‹Г€Г„ГЌГЂ Г±ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ" << endl;
 	}
 
 
@@ -741,19 +734,19 @@ void razmqnaNaGrupi(int i, int k, student SIT[][5], student KST[][5], student st
 }
 
 
-//функция за разпределение на студентите в група
+
 void razpredelenieVGrupa(int i, int k, student SIT[][5], student KST[][5], student studSIT[], student studKST[], int& grupiSIT, int& grupiKST) {
 
-	cout << "Групите бяха създадени успешно." << endl;
-	//променлива, която показва колко студенти остават да се разпреелят в групи
+	cout << "ГѓГ°ГіГЇГЁГІГҐ ГЎГїГµГ  Г±ГєГ§Г¤Г Г¤ГҐГ­ГЁ ГіГ±ГЇГҐГёГ­Г®." << endl;
+
 	int left = i;
 
-	//първо разпределям студентите от СИТ
-	//ако те са по-малко от 6
+
+
 	if (i <= 5) {
-		//групите ще са 1
+
 		grupiSIT = 1;
-		//въртя цикил, които се завърта броя на студентите пъти и записвам в групата поред студентите от целия поток
+		
 		for (int y = 0; y < i; y++) {
 
 			SIT[0][y] = studSIT[y];
@@ -763,20 +756,20 @@ void razpredelenieVGrupa(int i, int k, student SIT[][5], student KST[][5], stude
 
 
 	}
-	//ако студентите са 6 или 7
+	
 	else if (i > 5 && i < 8) {
-		//групите са 2
+	
 		grupiSIT = 2;
-		//първата група ще има 3ма студенти и ги записвам поред от потока
+	
 		for (int y = 0; y < 3; y++) {
 
 			SIT[0][y] = studSIT[y];
 
 
 		}
-		//декларирам променлива, която продължава обхождането на студентите от целия поток от мястото където е стигнал горния цикъл
+	
 		int br3 = 2;
-		//в зависимост дали са 6 или 7, то студентите във втората група ще са 3 или 4
+	
 		for (int y = 0; y < i - 3; y++) {
 			br3++;
 
@@ -788,11 +781,11 @@ void razpredelenieVGrupa(int i, int k, student SIT[][5], student KST[][5], stude
 
 
 	}
-	//правя проверка ако студентите са точно 11, защото е изключение и само тогава ще има 3 групи и в едната ще има само 3 студента
+	
 	if (i == 11) {
 		grupiSIT = 3;
 		int br3 = -1;
-		//запълвам групите
+	
 		for (int y1 = 0; y1 < 3; y1++) {
 			for (int y = 0; y < 4; y++) {
 				br3++;
@@ -814,14 +807,14 @@ void razpredelenieVGrupa(int i, int k, student SIT[][5], student KST[][5], stude
 
 	}
 
-	//когато студентите са межу 7 и 27
+	
 	else if (i > 7 && i <= 27 && i != 11) {
-		//групите са толкова, защото ги запълвам минимум с 4 човека
+	
 		grupiSIT = i / 4;
 		int br3 = -1;
 		for (int y1 = 0; y1 < grupiSIT + 1; y1++) {
 
-			//докато хората които са останали да се вкарат в група са повече от 3, се запълва текущата група с 4 студента и се преминава към следващата
+	
 			if (left >= 4) {
 				left -= 4;
 
@@ -836,9 +829,9 @@ void razpredelenieVGrupa(int i, int k, student SIT[][5], student KST[][5], stude
 
 			}
 
-			//ако са останали по-малко от 4, но все още има студенти за вкарваме в група
+			
 			else if (left > 0) {
-				//правя цикъл, който запълва групите от по 4ма студенти с 5-ти
+			
 				for (int y1 = 0; y1 < left; y1++) {
 					br3++;
 
@@ -853,14 +846,14 @@ void razpredelenieVGrupa(int i, int k, student SIT[][5], student KST[][5], stude
 
 
 	}
-	//ако студентите са над 27
+	
 	else if (i >= 28 && i <= 30) {
-		//групите задължително вече са 6
+	
 		grupiSIT = 6;
-		//записвам разликата на броя на студентите и 27 в променлива
+	
 		int ostatuk = i - 27;
 		int br3 = -1;
-		//всяка група я запълвам със по 4 студента и след изпълнението на този цикъл са въведени 24 студента в гурпите
+	
 		for (int y1 = 0; y1 < grupiSIT; y1++) {
 
 
@@ -876,8 +869,8 @@ void razpredelenieVGrupa(int i, int k, student SIT[][5], student KST[][5], stude
 
 		}
 
-		//3+остатъка представлява броя на студентите които остава да се въведат
-		//затова този цикъл запълва 3+остатък от 6-те функции с 5ти студент
+		
+		
 		for (int y1 = 0; y1 < 3 + ostatuk; y1++) {
 			br3++;
 
@@ -891,7 +884,7 @@ void razpredelenieVGrupa(int i, int k, student SIT[][5], student KST[][5], stude
 
 
 	}
-	//същото правя и за специалност КСТ
+	
 	int leftKST = k;
 
 
@@ -1026,18 +1019,18 @@ void razpredelenieVGrupa(int i, int k, student SIT[][5], student KST[][5], stude
 }
 
 
-//фунцкия за извеждането на студентите от двете специалности по успех
+
 void outputpouspeh(int i, int k, student studSIT[], student studKST[]) {
-	//декларирам масив, в който ще събера всички студенти от двата потока
+
 	student studobshto[60];
 	student help;
 	boolean flag = true;
-	//записвам всички студенти от СИТ и КСТ в новия масив
+
 	for (int y = 0; y < i; y++) {
 
 		studobshto[y] = studSIT[y];
 
-		//записвам и среден успех
+
 		studobshto[y].srus = (studSIT[y].bp + studSIT[y].mat + studSIT[y].fiz + studSIT[y].el + studSIT[y].web) / 5.0;
 	}
 	int br3 = 0;
@@ -1048,7 +1041,7 @@ void outputpouspeh(int i, int k, student studSIT[], student studKST[]) {
 		studobshto[y].srus = (studKST[br3].bp + studKST[br3].mat + studKST[br3].fiz + studKST[br3].el + studKST[br3].web) / 5.0;
 		br3++;
 	}
-	//с метода на балончето сортирам всички студенти от новия масив
+
 	for (int br1 = i + k; br1 > 1; br1--) {
 		if (!flag) {
 			break;
@@ -1075,28 +1068,28 @@ void outputpouspeh(int i, int k, student studSIT[], student studKST[]) {
 
 
 
-	//извеждам студент по студент
+
 	for (int y = 0; y < i + k; y++) {
 
-		cout << "Специалност:";
+		cout << "Г‘ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ:";
 		cout << studobshto[y].specialnost << endl;
-		cout << "Име и фамилия:";
+		cout << "Г€Г¬ГҐ ГЁ ГґГ Г¬ГЁГ«ГЁГї:";
 		cout << studobshto[y].ime << endl;
-		cout << "Среден успех:";
+		cout << "Г‘Г°ГҐГ¤ГҐГ­ ГіГ±ГЇГҐГµ:";
 		cout << studobshto[y].srus << endl;
-		cout << "Факултетен номер:";
+		cout << "Г”Г ГЄГіГ«ГІГҐГІГҐГ­ Г­Г®Г¬ГҐГ°:";
 		cout << studobshto[y].faknomer << endl;
-		cout << "Месец и година на раждане (формат месец.година):";
+		cout << "ГЊГҐГ±ГҐГ¶ ГЁ ГЈГ®Г¤ГЁГ­Г  Г­Г  Г°Г Г¦Г¤Г Г­ГҐ (ГґГ®Г°Г¬Г ГІ Г¬ГҐГ±ГҐГ¶.ГЈГ®Г¤ГЁГ­Г ):";
 		cout << studobshto[y].mesec << "." << studobshto[y].godina << endl;
-		cout << "Оценка по математика:";
+		cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® Г¬Г ГІГҐГ¬Г ГІГЁГЄГ :";
 		cout << studobshto[y].mat << endl;
-		cout << "Оценка по БП:";
+		cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГЃГЏ:";
 		cout << studobshto[y].bp << endl;
-		cout << "Оценка по физическо:";
+		cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГґГЁГ§ГЁГ·ГҐГ±ГЄГ®:";
 		cout << studobshto[y].fiz << endl;
-		cout << "Оценка по УЕБ:";
+		cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® Г“Г…ГЃ:";
 		cout << studobshto[y].web << endl;
-		cout << "Оценка по електроника:";
+		cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГҐГ«ГҐГЄГІГ°Г®Г­ГЁГЄГ :";
 		cout << studobshto[y].el << endl;
 		cout << endl;
 	}
@@ -1121,62 +1114,62 @@ void outputpouspeh(int i, int k, student studSIT[], student studKST[]) {
 
 
 
-//функция за извеждане само на студентите с отличен среден успех
+
 
 void outputUspehNad5i50(int i, int k, student studSIT[], student studKST[]) {
 
-	//за всеки студент (в случая за спец. СИТ) се  намира средния успех и ако е над 5.499 ( за да не стане проблем с double), той се извежда
+
 	for (int y = 0; y < i; y++) {
 		double current = (studSIT[y].bp + studSIT[y].mat + studSIT[y].fiz + studSIT[y].el + studSIT[y].web) / 5.0;
 		if (current > 5.499) {
-			cout << "Специалност:";
+			cout << "Г‘ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ:";
 			cout << studSIT[y].specialnost << endl;
-			cout << "Име и фамилия:";
+			cout << "Г€Г¬ГҐ ГЁ ГґГ Г¬ГЁГ«ГЁГї:";
 			cout << studSIT[y].ime << endl;
-			cout << "Среден успех:";
+			cout << "Г‘Г°ГҐГ¤ГҐГ­ ГіГ±ГЇГҐГµ:";
 			cout << current << endl;
-			cout << "Факултетен номер:";
+			cout << "Г”Г ГЄГіГ«ГІГҐГІГҐГ­ Г­Г®Г¬ГҐГ°:";
 			cout << studSIT[y].faknomer << endl;
-			cout << "Месец и година на раждане (формат месец.година):";
+			cout << "ГЊГҐГ±ГҐГ¶ ГЁ ГЈГ®Г¤ГЁГ­Г  Г­Г  Г°Г Г¦Г¤Г Г­ГҐ (ГґГ®Г°Г¬Г ГІ Г¬ГҐГ±ГҐГ¶.ГЈГ®Г¤ГЁГ­Г ):";
 			cout << studSIT[y].mesec << "." << studSIT[y].godina << endl;
-			cout << "Оценка по математика:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® Г¬Г ГІГҐГ¬Г ГІГЁГЄГ :";
 			cout << studSIT[y].mat << endl;
-			cout << "Оценка по БП:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГЃГЏ:";
 			cout << studSIT[y].bp << endl;
-			cout << "Оценка по физическо:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГґГЁГ§ГЁГ·ГҐГ±ГЄГ®:";
 			cout << studSIT[y].fiz << endl;
-			cout << "Оценка по УЕБ:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® Г“Г…ГЃ:";
 			cout << studSIT[y].web << endl;
-			cout << "Оценка по електроника:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГҐГ«ГҐГЄГІГ°Г®Г­ГЁГЄГ :";
 			cout << studSIT[y].el << endl;
 			cout << endl;
 
 		}
 	}
 
-	//същото се случва и за КСТ
+	//Г±ГєГ№Г®ГІГ® Г±ГҐ Г±Г«ГіГ·ГўГ  ГЁ Г§Г  ГЉГ‘Г’
 	for (int y = 0; y < k; y++) {
 		double current = (studKST[y].bp + studKST[y].mat + studKST[y].fiz + studKST[y].el + studKST[y].web) / 5.0;
 		if (current >= 5.499) {
-			cout << "Специалност:";
+			cout << "Г‘ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ:";
 			cout << studKST[y].specialnost << endl;
-			cout << "Име и фамилия:";
+			cout << "Г€Г¬ГҐ ГЁ ГґГ Г¬ГЁГ«ГЁГї:";
 			cout << studKST[y].ime << endl;
-			cout << "Среден успех:";
+			cout << "Г‘Г°ГҐГ¤ГҐГ­ ГіГ±ГЇГҐГµ:";
 			cout << current << endl;
-			cout << "Факултетен номер:";
+			cout << "Г”Г ГЄГіГ«ГІГҐГІГҐГ­ Г­Г®Г¬ГҐГ°:";
 			cout << studKST[y].faknomer << endl;
-			cout << "Месец и година на раждане (формат месец.година):";
+			cout << "ГЊГҐГ±ГҐГ¶ ГЁ ГЈГ®Г¤ГЁГ­Г  Г­Г  Г°Г Г¦Г¤Г Г­ГҐ (ГґГ®Г°Г¬Г ГІ Г¬ГҐГ±ГҐГ¶.ГЈГ®Г¤ГЁГ­Г ):";
 			cout << studKST[y].mesec << "." << studKST[y].godina << endl;
-			cout << "Оценка по математика:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® Г¬Г ГІГҐГ¬Г ГІГЁГЄГ :";
 			cout << studKST[y].mat << endl;
-			cout << "Оценка по БП:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГЃГЏ:";
 			cout << studKST[y].bp << endl;
-			cout << "Оценка по физическо:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГґГЁГ§ГЁГ·ГҐГ±ГЄГ®:";
 			cout << studKST[y].fiz << endl;
-			cout << "Оценка по УЕБ:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® Г“Г…ГЃ:";
 			cout << studKST[y].web << endl;
-			cout << "Оценка по електроника:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГҐГ«ГҐГЄГІГ°Г®Г­ГЁГЄГ :";
 			cout << studKST[y].el << endl;
 			cout << endl;
 
@@ -1198,18 +1191,18 @@ void outputUspehNad5i50(int i, int k, student studSIT[], student studKST[]) {
 
 
 
-//фунцкия за вкарване на данните от файла в програмата
+
 void fromFile(int& i, int& k, student studSIT[], student studKST[]) {
 	fstream f;
 
 	f.open("FailSDanni.txt", ios::out | ios::in | ios::app);
-	//ако файлът е празен влиза в следния if
+
 	if (f.peek() == ifstream::traits_type::eof()) {
-		cout << "Файлът е празен." << endl;
+		cout << "Г”Г Г©Г«ГєГІ ГҐ ГЇГ°Г Г§ГҐГ­." << endl;
 	}
-	//ако не е празен, ред по ред се вкарват данните от файла в масивите на двете специалности
+
 	else {
-		cout << "Данните бяха прехвърлени успешно." << endl;
+		cout << "Г„Г Г­Г­ГЁГІГҐ ГЎГїГµГ  ГЇГ°ГҐГµГўГєГ°Г«ГҐГ­ГЁ ГіГ±ГЇГҐГёГ­Г®." << endl;
 
 		f >> i;
 		f >> k;
@@ -1219,8 +1212,8 @@ void fromFile(int& i, int& k, student studSIT[], student studKST[]) {
 		for (int y = 0; y < i + k; y++) {
 			string c = "";
 			f >> c;
-			if (c == "СИТ") {
-				studSIT[brsit].specialnost = "СИТ";
+			if (c == "Г‘Г€Г’") {
+				studSIT[brsit].specialnost = "Г‘Г€Г’";
 				f.ignore();
 				getline(f, studSIT[brsit].ime);
 				f >> studSIT[brsit].faknomer;
@@ -1236,8 +1229,8 @@ void fromFile(int& i, int& k, student studSIT[], student studKST[]) {
 
 
 
-			if (c == "КСТ") {
-				studKST[brkst].specialnost = "КСТ";
+			if (c == "ГЉГ‘Г’") {
+				studKST[brkst].specialnost = "ГЉГ‘Г’";
 				f.ignore();
 				getline(f, studKST[brkst].ime);
 				f >> studKST[brkst].faknomer;
@@ -1267,12 +1260,12 @@ void fromFile(int& i, int& k, student studSIT[], student studKST[]) {
 
 
 
-//функция за изкарване на информацията от програмата във файл
+
 void save(int i, int k, student studSIT[], student studKST[]) {
-	cout << "Файлът беше записан успешно." << endl;
+	cout << "Г”Г Г©Г«ГєГІ ГЎГҐГёГҐ Г§Г ГЇГЁГ±Г Г­ ГіГ±ГЇГҐГёГ­Г®." << endl;
 	cout << endl;
 	fstream f;
-	//когато се прави това , данните от вече записан файл се изтриват
+	
 	f.open("FailSDanni.txt", std::ofstream::out | std::ofstream::trunc);
 	f.close();
 	f.open("FailSDanni.txt", ios::out | ios::in | ios::app);
@@ -1327,10 +1320,10 @@ void save(int i, int k, student studSIT[], student studKST[]) {
 
 
 void savebinary(int i, int k, student studSIT[], student studKST[]) {
-	cout << "Двуичният файл беше записан успешно." << endl;
+	cout << "Г„ГўГіГЁГ·Г­ГЁГїГІ ГґГ Г©Г« ГЎГҐГёГҐ Г§Г ГЇГЁГ±Г Г­ ГіГ±ГЇГҐГёГ­Г®." << endl;
 	cout << endl;
 	fstream f;
-	//когато се прави това , данните от вече записан файл се изтриват
+	
 	f.open("dvuich.txt", ios::out | ios::trunc);
 	f.close();
 	f.open("dvuich.txt", ios::binary | ios::out);
@@ -1402,11 +1395,11 @@ void savebinary(int i, int k, student studSIT[], student studKST[]) {
 
 
 }
-//извеждане на най-добрите студенти от СИТ и КСТ
+
 void outputNaiDoburStudent(int i, int k, student studSIT[], student studKST[]) {
 	double maxSIT = 0;
 	double maxKST = 0;
-	//намирам максималния среден успех
+	
 	for (int y = 0; y < i; y++) {
 		double current = (studSIT[y].bp + studSIT[y].mat + studSIT[y].fiz + studSIT[y].el + studSIT[y].web) / 5;
 		if (current > maxSIT) {
@@ -1415,29 +1408,29 @@ void outputNaiDoburStudent(int i, int k, student studSIT[], student studKST[]) {
 		}
 
 	}
-	//обхождам всички студенти от потока и ако средния успех им е равен на максималния се извеждат( ако има няколко човека с еднакъв успех, всеки един от тях се извежда)
+	
 	for (int y = 0; y < i; y++) {
 		double current = (studSIT[y].bp + studSIT[y].mat + studSIT[y].fiz + studSIT[y].el + studSIT[y].web) / 5;
 		if (current == maxSIT) {
-			cout << "Специалност:";
+			cout << "Г‘ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ:";
 			cout << studSIT[y].specialnost << endl;
-			cout << "Име и фамилия:";
+			cout << "Г€Г¬ГҐ ГЁ ГґГ Г¬ГЁГ«ГЁГї:";
 			cout << studSIT[y].ime << endl;
-			cout << "Среден успех:";
+			cout << "Г‘Г°ГҐГ¤ГҐГ­ ГіГ±ГЇГҐГµ:";
 			cout << current << endl;
-			cout << "Факултетен номер:";
+			cout << "Г”Г ГЄГіГ«ГІГҐГІГҐГ­ Г­Г®Г¬ГҐГ°:";
 			cout << studSIT[y].faknomer << endl;
-			cout << "Месец и година на раждане (формат месец.година):";
+			cout << "ГЊГҐГ±ГҐГ¶ ГЁ ГЈГ®Г¤ГЁГ­Г  Г­Г  Г°Г Г¦Г¤Г Г­ГҐ (ГґГ®Г°Г¬Г ГІ Г¬ГҐГ±ГҐГ¶.ГЈГ®Г¤ГЁГ­Г ):";
 			cout << studSIT[y].mesec << "." << studSIT[y].godina << endl;
-			cout << "Оценка по математика:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® Г¬Г ГІГҐГ¬Г ГІГЁГЄГ :";
 			cout << studSIT[y].mat << endl;
-			cout << "Оценка по БП:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГЃГЏ:";
 			cout << studSIT[y].bp << endl;
-			cout << "Оценка по физическо:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГґГЁГ§ГЁГ·ГҐГ±ГЄГ®:";
 			cout << studSIT[y].fiz << endl;
-			cout << "Оценка по УЕБ:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® Г“Г…ГЃ:";
 			cout << studSIT[y].web << endl;
-			cout << "Оценка по електроника:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГҐГ«ГҐГЄГІГ°Г®Г­ГЁГЄГ :";
 			cout << studSIT[y].el << endl;
 			cout << endl;
 
@@ -1446,7 +1439,7 @@ void outputNaiDoburStudent(int i, int k, student studSIT[], student studKST[]) {
 	}
 
 
-	//същото правя и за КСТ
+	
 
 	for (int y = 0; y < k; y++) {
 		double current = (studKST[y].bp + studKST[y].mat + studKST[y].fiz + studKST[y].el + studKST[y].web) / 5;
@@ -1462,25 +1455,25 @@ void outputNaiDoburStudent(int i, int k, student studSIT[], student studKST[]) {
 		double current = (studKST[y].bp + studKST[y].mat + studKST[y].fiz + studKST[y].el + studKST[y].web) / 5;
 		if (current == maxKST) {
 
-			cout << "Специалност:";
+			cout << "Г‘ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ:";
 			cout << studKST[y].specialnost << endl;
-			cout << "Име и фамилия:";
+			cout << "Г€Г¬ГҐ ГЁ ГґГ Г¬ГЁГ«ГЁГї:";
 			cout << studKST[y].ime << endl;
-			cout << "Среден успех:";
+			cout << "Г‘Г°ГҐГ¤ГҐГ­ ГіГ±ГЇГҐГµ:";
 			cout << current << endl;
-			cout << "Факултетен номер:";
+			cout << "Г”Г ГЄГіГ«ГІГҐГІГҐГ­ Г­Г®Г¬ГҐГ°:";
 			cout << studKST[y].faknomer << endl;
-			cout << "Месец и година на раждане (формат месец.година):";
+			cout << "ГЊГҐГ±ГҐГ¶ ГЁ ГЈГ®Г¤ГЁГ­Г  Г­Г  Г°Г Г¦Г¤Г Г­ГҐ (ГґГ®Г°Г¬Г ГІ Г¬ГҐГ±ГҐГ¶.ГЈГ®Г¤ГЁГ­Г ):";
 			cout << studKST[y].mesec << "." << studKST[y].godina << endl;
-			cout << "Оценка по математика:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® Г¬Г ГІГҐГ¬Г ГІГЁГЄГ :";
 			cout << studKST[y].mat << endl;
-			cout << "Оценка по БП:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГЃГЏ:";
 			cout << studKST[y].bp << endl;
-			cout << "Оценка по физическо:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГґГЁГ§ГЁГ·ГҐГ±ГЄГ®:";
 			cout << studKST[y].fiz << endl;
-			cout << "Оценка по УЕБ:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® Г“Г…ГЃ:";
 			cout << studKST[y].web << endl;
-			cout << "Оценка по електроника:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГҐГ«ГҐГЄГІГ°Г®Г­ГЁГЄГ :";
 			cout << studKST[y].el << endl;
 			cout << endl;
 
@@ -1496,9 +1489,9 @@ void outputNaiDoburStudent(int i, int k, student studSIT[], student studKST[]) {
 
 }
 
-//извеждане на студенти подредени по възраст
+
 void outputpovuzrast(int i, int k, student studSIT[], student studKST[]) {
-	//правя общ масив, в който слагам всички студенти от двата потока
+	
 	student studobshto[60];
 	student help;
 	boolean flag = true;
@@ -1515,7 +1508,7 @@ void outputpovuzrast(int i, int k, student studSIT[], student studKST[]) {
 
 		br3++;
 	}
-	//по метода на мехурчето сортирам студентите първо по месеци
+	
 	for (int br1 = i + k; br1 > 1; br1--) {
 		if (!flag) {
 			break;
@@ -1537,7 +1530,7 @@ void outputpovuzrast(int i, int k, student studSIT[], student studKST[]) {
 		}
 
 	}
-	//след това ги сортирам по години и тъй като вече са сортирани по месеци първоначално, то сортировката е приключена успешно
+	
 	flag = true;
 	for (int br1 = i + k; br1 > 1; br1--) {
 		if (!flag) {
@@ -1559,36 +1552,32 @@ void outputpovuzrast(int i, int k, student studSIT[], student studKST[]) {
 		}
 
 	}
-	//извеждам студентите
+	
 	for (int y = 0; y < i + k; y++) {
 
-		cout << "Специалност:";
+		cout << "Г‘ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ:";
 		cout << studobshto[y].specialnost << endl;
-		cout << "Име и фамилия:";
+		cout << "Г€Г¬ГҐ ГЁ ГґГ Г¬ГЁГ«ГЁГї:";
 		cout << studobshto[y].ime << endl;
-		cout << "Факултетен номер:";
+		cout << "Г”Г ГЄГіГ«ГІГҐГІГҐГ­ Г­Г®Г¬ГҐГ°:";
 		cout << studobshto[y].faknomer << endl;
-		cout << "Месец и година на раждане (формат месец.година):";
+		cout << "ГЊГҐГ±ГҐГ¶ ГЁ ГЈГ®Г¤ГЁГ­Г  Г­Г  Г°Г Г¦Г¤Г Г­ГҐ (ГґГ®Г°Г¬Г ГІ Г¬ГҐГ±ГҐГ¶.ГЈГ®Г¤ГЁГ­Г ):";
 		cout << studobshto[y].mesec << "." << studobshto[y].godina << endl;
-		cout << "Оценка по математика:";
+		cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® Г¬Г ГІГҐГ¬Г ГІГЁГЄГ :";
 		cout << studobshto[y].mat << endl;
-		cout << "Оценка по БП:";
+		cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГЃГЏ:";
 		cout << studobshto[y].bp << endl;
-		cout << "Оценка по физическо:";
+		cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГґГЁГ§ГЁГ·ГҐГ±ГЄГ®:";
 		cout << studobshto[y].fiz << endl;
-		cout << "Оценка по УЕБ:";
+		cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® Г“Г…ГЃ:";
 		cout << studobshto[y].web << endl;
-		cout << "Оценка по електроника:";
+		cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГҐГ«ГҐГЄГІГ°Г®Г­ГЁГЄГ :";
 		cout << studobshto[y].el << endl;
 		cout << endl;
 	}
 
 
 }
-//const int PI 3.14
-//#define PI 3.14
-//#define служи компилаторът да замени препратките към съответната константа с определената стойност(3.14) по време на компилиране.
-//cout<<hex<<10;
 
 
 
@@ -1597,30 +1586,31 @@ void outputpovuzrast(int i, int k, student studSIT[], student studKST[]) {
 
 
 
-//извеждане на студентите с отличен по БП
+
+
 void outputWith6poBP(int i, int k, student studSIT[], student studKST[]) {
 
-	//проверявам за всеки студент дали оценката му е >=5.499 и ако да, го извеждам
+
 	for (int y = 0; y < i; y++) {
 		if (studSIT[y].bp >= 5.499) {
 
-			cout << "Специалност:";
+			cout << "Г‘ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ:";
 			cout << studSIT[y].specialnost << endl;
-			cout << "Име и фамилия:";
+			cout << "Г€Г¬ГҐ ГЁ ГґГ Г¬ГЁГ«ГЁГї:";
 			cout << studSIT[y].ime << endl;
-			cout << "Факултетен номер:";
+			cout << "Г”Г ГЄГіГ«ГІГҐГІГҐГ­ Г­Г®Г¬ГҐГ°:";
 			cout << studSIT[y].faknomer << endl;
-			cout << "Месец и година на раждане (формат месец.година):";
+			cout << "ГЊГҐГ±ГҐГ¶ ГЁ ГЈГ®Г¤ГЁГ­Г  Г­Г  Г°Г Г¦Г¤Г Г­ГҐ (ГґГ®Г°Г¬Г ГІ Г¬ГҐГ±ГҐГ¶.ГЈГ®Г¤ГЁГ­Г ):";
 			cout << studSIT[y].mesec << "." << studSIT[y].godina << endl;
-			cout << "Оценка по математика:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® Г¬Г ГІГҐГ¬Г ГІГЁГЄГ :";
 			cout << studSIT[y].mat << endl;
-			cout << "Оценка по БП:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГЃГЏ:";
 			cout << studSIT[y].bp << endl;
-			cout << "Оценка по физическо:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГґГЁГ§ГЁГ·ГҐГ±ГЄГ®:";
 			cout << studSIT[y].fiz << endl;
-			cout << "Оценка по УЕБ:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® Г“Г…ГЃ:";
 			cout << studSIT[y].web << endl;
-			cout << "Оценка по електроника:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГҐГ«ГҐГЄГІГ°Г®Г­ГЁГЄГ :";
 			cout << studSIT[y].el << endl;
 			cout << endl;
 		}
@@ -1628,121 +1618,121 @@ void outputWith6poBP(int i, int k, student studSIT[], student studKST[]) {
 	}
 
 
-	//същото правя и за КСТ
+	
 	for (int y = 0; y < k; y++) {
 		if (studKST[y].bp >= 5.499) {
-			cout << "Специалност:";
+			cout << "Г‘ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ:";
 			cout << studKST[y].specialnost << endl;
-			cout << "Име и фамилия:";
+			cout << "Г€Г¬ГҐ ГЁ ГґГ Г¬ГЁГ«ГЁГї:";
 			cout << studKST[y].ime << endl;
-			cout << "Факултетен номер:";
+			cout << "Г”Г ГЄГіГ«ГІГҐГІГҐГ­ Г­Г®Г¬ГҐГ°:";
 			cout << studKST[y].faknomer << endl;
-			cout << "Месец и година на раждане (формат месец.година):";
+			cout << "ГЊГҐГ±ГҐГ¶ ГЁ ГЈГ®Г¤ГЁГ­Г  Г­Г  Г°Г Г¦Г¤Г Г­ГҐ (ГґГ®Г°Г¬Г ГІ Г¬ГҐГ±ГҐГ¶.ГЈГ®Г¤ГЁГ­Г ):";
 			cout << studKST[y].mesec << "." << studSIT[y].godina << endl;
-			cout << "Оценка по математика:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® Г¬Г ГІГҐГ¬Г ГІГЁГЄГ :";
 			cout << studKST[y].mat << endl;
-			cout << "Оценка по БП:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГЃГЏ:";
 			cout << studKST[y].bp << endl;
-			cout << "Оценка по физическо:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГґГЁГ§ГЁГ·ГҐГ±ГЄГ®:";
 			cout << studKST[y].fiz << endl;
-			cout << "Оценка по УЕБ:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® Г“Г…ГЃ:";
 			cout << studKST[y].web << endl;
-			cout << "Оценка по електроника:";
+			cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГҐГ«ГҐГЄГІГ°Г®Г­ГЁГЄГ :";
 			cout << studKST[y].el << endl;
 			cout << endl;
 		}
 	}
 
 }
-//въвеждане на n на брой студенти
+
 void enterManyStudents(int& i, int& k, student studSIT[], student studKST[]) {
-	cout << "Въведете брой студенти, които искате да въведете:";
+	cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ ГЎГ°Г®Г© Г±ГІГіГ¤ГҐГ­ГІГЁ, ГЄГ®ГЁГІГ® ГЁГ±ГЄГ ГІГҐ Г¤Г  ГўГєГўГҐГ¤ГҐГІГҐ:";
 	int n;
-	//въвежда се броя на студентите
+
 	cin >> n;
 
-	//цикъла се върти n пъти
+
 	for (int br = 1; br <= n; br++) {
 
-		cout << "Студент " << br << endl;
-		cout << "Въведете специалност на студента (СИТ или КСТ)(Въведете 0 ако искате да се спре въвеждането на студенти) : " << endl;
+		cout << "Г‘ГІГіГ¤ГҐГ­ГІ " << br << endl;
+		cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г±ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ Г­Г  Г±ГІГіГ¤ГҐГ­ГІГ  (Г‘Г€Г’ ГЁГ«ГЁ ГЉГ‘Г’)(Г‚ГєГўГҐГ¤ГҐГІГҐ 0 Г ГЄГ® ГЁГ±ГЄГ ГІГҐ Г¤Г  Г±ГҐ Г±ГЇГ°ГҐ ГўГєГўГҐГ¦Г¤Г Г­ГҐГІГ® Г­Г  Г±ГІГіГ¤ГҐГ­ГІГЁ) : " << endl;
 		string s;
 
 		cin >> s;
-		//ако вместо специалност се въведе 0 , въвеждането се прекратява
+	
 		if (s == "0") {
-			cout << "Прекратихте въвеждането на студенти." << endl;
+			cout << "ГЏГ°ГҐГЄГ°Г ГІГЁГµГІГҐ ГўГєГўГҐГ¦Г¤Г Г­ГҐГІГ® Г­Г  Г±ГІГіГ¤ГҐГ­ГІГЁ." << endl;
 			break;
 		}
-		//ако въведената специалност е СИТ:
-		else if (s == "СИТ") {
-			//понеже може да има максимално 30 ученици, ако се иска да се въведе 31 отиваме във else
+		
+		else if (s == "Г‘Г€Г’") {
+			
 			if (i < 30) {
 
-				//се въвеждат и останалите полета и студента се записва в потока на СИТ
+				
 				studSIT[i].specialnost = s;
 				cin.ignore();
-				cout << "Въведете име и фамилия: ";
+				cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ ГЁГ¬ГҐ ГЁ ГґГ Г¬ГЁГ«ГЁГї: ";
 				getline(cin, studSIT[i].ime);
-				cout << "Въведете факултетен номер:";
+				cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ ГґГ ГЄГіГ«ГІГҐГІГҐГ­ Г­Г®Г¬ГҐГ°:";
 				cin >> studSIT[i].faknomer;
-				cout << "Въведете година на раждане:";
+				cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ ГЈГ®Г¤ГЁГ­Г  Г­Г  Г°Г Г¦Г¤Г Г­ГҐ:";
 				cin >> studSIT[i].godina;
-				cout << "Въведете месец на раждане с цифри (например за януари въведете 1, за февруари 2 и т.н.) :";
+				cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г¬ГҐГ±ГҐГ¶ Г­Г  Г°Г Г¦Г¤Г Г­ГҐ Г± Г¶ГЁГґГ°ГЁ (Г­Г ГЇГ°ГЁГ¬ГҐГ° Г§Г  ГїГ­ГіГ Г°ГЁ ГўГєГўГҐГ¤ГҐГІГҐ 1, Г§Г  ГґГҐГўГ°ГіГ Г°ГЁ 2 ГЁ ГІ.Г­.) :";
 				cin >> studSIT[i].mesec;
-				cout << "Въведете оценка по математика: ";
+				cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г®Г¶ГҐГ­ГЄГ  ГЇГ® Г¬Г ГІГҐГ¬Г ГІГЁГЄГ : ";
 				cin >> studSIT[i].mat;
-				cout << "Въведете оценка по БП: ";
+				cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г®Г¶ГҐГ­ГЄГ  ГЇГ® ГЃГЏ: ";
 				cin >> studSIT[i].bp;
-				cout << "Въведете оценка по физическо: ";
+				cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г®Г¶ГҐГ­ГЄГ  ГЇГ® ГґГЁГ§ГЁГ·ГҐГ±ГЄГ®: ";
 				cin >> studSIT[i].fiz;
-				cout << "Въведете оценка по УЕБ: ";
+				cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г®Г¶ГҐГ­ГЄГ  ГЇГ® Г“Г…ГЃ: ";
 				cin >> studSIT[i].web;
-				cout << "Въведете оценка по електроника: ";
+				cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г®Г¶ГҐГ­ГЄГ  ГЇГ® ГҐГ«ГҐГЄГІГ°Г®Г­ГЁГЄГ : ";
 				cin >> studSIT[i].el;
 				i++;
 			}
-			//ако се опитваме да въведем 31 ученик се изкарва следното:
+			
 			else {
-				cout << "Специалност СИТ вече има 30 ученици." << endl;
+				cout << "Г‘ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ Г‘Г€Г’ ГўГҐГ·ГҐ ГЁГ¬Г  30 ГіГ·ГҐГ­ГЁГ¶ГЁ." << endl;
 
 			}
 		}
-		//същото и за КСТ
-		else if (s == "КСТ") {
+		
+		else if (s == "ГЉГ‘Г’") {
 			if (k < 30) {
 
 
 				studKST[k].specialnost = s;
 				cin.ignore();
-				cout << "Въведете име и фамилия:";
+				cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ ГЁГ¬ГҐ ГЁ ГґГ Г¬ГЁГ«ГЁГї:";
 				getline(cin, studKST[k].ime);
-				cout << "Въведете факултетен номер:";
+				cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ ГґГ ГЄГіГ«ГІГҐГІГҐГ­ Г­Г®Г¬ГҐГ°:";
 				cin >> studKST[k].faknomer;
-				cout << "Въведете година на раждане:";
+				cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ ГЈГ®Г¤ГЁГ­Г  Г­Г  Г°Г Г¦Г¤Г Г­ГҐ:";
 				cin >> studKST[k].godina;
-				cout << "Въведете месец на раждане с цифри (например за януари въведете 1, за февруари 2 и т.н.) :";
+				cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г¬ГҐГ±ГҐГ¶ Г­Г  Г°Г Г¦Г¤Г Г­ГҐ Г± Г¶ГЁГґГ°ГЁ (Г­Г ГЇГ°ГЁГ¬ГҐГ° Г§Г  ГїГ­ГіГ Г°ГЁ ГўГєГўГҐГ¤ГҐГІГҐ 1, Г§Г  ГґГҐГўГ°ГіГ Г°ГЁ 2 ГЁ ГІ.Г­.) :";
 				cin >> studKST[k].mesec;
-				cout << "Въведете оценка по математика: ";
+				cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г®Г¶ГҐГ­ГЄГ  ГЇГ® Г¬Г ГІГҐГ¬Г ГІГЁГЄГ : ";
 				cin >> studKST[k].mat;
-				cout << "Въведете оценка по БП: ";
+				cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г®Г¶ГҐГ­ГЄГ  ГЇГ® ГЃГЏ: ";
 				cin >> studKST[k].bp;
-				cout << "Въведете оценка по физическо: ";
+				cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г®Г¶ГҐГ­ГЄГ  ГЇГ® ГґГЁГ§ГЁГ·ГҐГ±ГЄГ®: ";
 				cin >> studKST[k].fiz;
-				cout << "Въведете оценка по УЕБ: ";
+				cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г®Г¶ГҐГ­ГЄГ  ГЇГ® Г“Г…ГЃ: ";
 				cin >> studKST[k].web;
-				cout << "Въведете оценка по електроника: ";
+				cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г®Г¶ГҐГ­ГЄГ  ГЇГ® ГҐГ«ГҐГЄГІГ°Г®Г­ГЁГЄГ : ";
 				cin >> studKST[k].el;
 				k++;
 			}
 			else {
-				cout << "Специалност КСТ вече има 30 ученици." << endl;
+				cout << "Г‘ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ ГЉГ‘Г’ ГўГҐГ·ГҐ ГЁГ¬Г  30 ГіГ·ГҐГ­ГЁГ¶ГЁ." << endl;
 			}
 
 		}
-		//ако въведена специалност не е КСТ нито СИТ , нито е е прекратено въвеждането се извежда следното съобщение и брояча на цикъла се връща с 1
+		
 		else {
-			cout << "Въведете валидна специалност." << endl;
+			cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ ГўГ Г«ГЁГ¤Г­Г  Г±ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ." << endl;
 			cout << endl;
 			br--;
 		}
@@ -1753,50 +1743,50 @@ void enterManyStudents(int& i, int& k, student studSIT[], student studKST[]) {
 
 }
 
-//извеждане на студенти от въведена специалност
+
 void output(int i, int k, student studSIT[], student studKST[]) {
-	cout << "Въведете за коя специалност искате да изведете студентите (СИТ или КСТ): " << endl;
+	cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г§Г  ГЄГ®Гї Г±ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ ГЁГ±ГЄГ ГІГҐ Г¤Г  ГЁГ§ГўГҐГ¤ГҐГІГҐ Г±ГІГіГ¤ГҐГ­ГІГЁГІГҐ (Г‘Г€Г’ ГЁГ«ГЁ ГЉГ‘Г’): " << endl;
 	string s;
 	cin >> s;
 
 
-	if (s == "СИТ") {
+	if (s == "Г‘Г€Г’") {
 		int y = 0;
 		while (y < i) {
-			//правя така, че да се върти цикъл до 5 и да се извеждат само 5 студенти на страница
+			
 			for (int y1 = 0; y1 < 5; y1++) {
-				//ако брояча стане по-голям от броя на студентите извеждането спира
+				
 				if (y >= i) {
 					break;
 				}
 
-				cout << "Специалност:";
+				cout << "Г‘ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ:";
 				cout << studSIT[y].specialnost << endl;
-				cout << "Име и фамилия:";
+				cout << "Г€Г¬ГҐ ГЁ ГґГ Г¬ГЁГ«ГЁГї:";
 				cout << studSIT[y].ime << endl;
-				cout << "Факултетен номер:";
+				cout << "Г”Г ГЄГіГ«ГІГҐГІГҐГ­ Г­Г®Г¬ГҐГ°:";
 				cout << studSIT[y].faknomer << endl;
-				cout << "Месец и година на раждане (формат месец.година):";
+				cout << "ГЊГҐГ±ГҐГ¶ ГЁ ГЈГ®Г¤ГЁГ­Г  Г­Г  Г°Г Г¦Г¤Г Г­ГҐ (ГґГ®Г°Г¬Г ГІ Г¬ГҐГ±ГҐГ¶.ГЈГ®Г¤ГЁГ­Г ):";
 				cout << studSIT[y].mesec << "." << studSIT[y].godina << endl;
-				cout << "Оценка по математика:";
+				cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® Г¬Г ГІГҐГ¬Г ГІГЁГЄГ :";
 				cout << studSIT[y].mat << endl;
-				cout << "Оценка по БП:";
+				cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГЃГЏ:";
 				cout << studSIT[y].bp << endl;
-				cout << "Оценка по физическо:";
+				cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГґГЁГ§ГЁГ·ГҐГ±ГЄГ®:";
 				cout << studSIT[y].fiz << endl;
-				cout << "Оценка по УЕБ:";
+				cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® Г“Г…ГЃ:";
 				cout << studSIT[y].web << endl;
-				cout << "Оценка по електроника:";
+				cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГҐГ«ГҐГЄГІГ°Г®Г­ГЁГЄГ :";
 				cout << studSIT[y].el << endl;
 				cout << endl;
 				y++;
 			}
-			//ако брояча стане по-голям от броя на студентите, редовете долу няма да се изведат
+			
 			if (y >= i) {
 				break;
 			}
-			//въвежда се n, за да се отиде на следващата страница от студенти, ако всеки един друг въведен символ означава, че се приключва с извеждането
-			cout << "Въведете n за да отидете на следващата страница, или какъвто и да е смивол освен n, за да приключите с извеждането:";
+			
+			cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ n Г§Г  Г¤Г  Г®ГІГЁГ¤ГҐГІГҐ Г­Г  Г±Г«ГҐГ¤ГўГ Г№Г ГІГ  Г±ГІГ°Г Г­ГЁГ¶Г , ГЁГ«ГЁ ГЄГ ГЄГєГўГІГ® ГЁ Г¤Г  ГҐ Г±Г¬ГЁГўГ®Г« Г®Г±ГўГҐГ­ n, Г§Г  Г¤Г  ГЇГ°ГЁГЄГ«ГѕГ·ГЁГІГҐ Г± ГЁГ§ГўГҐГ¦Г¤Г Г­ГҐГІГ®:";
 			string s1;
 			cin >> s1;
 
@@ -1804,15 +1794,15 @@ void output(int i, int k, student studSIT[], student studKST[]) {
 				continue;
 			}
 			else {
-				cout << "Вие приключихте с извеждането." << endl;
+				cout << "Г‚ГЁГҐ ГЇГ°ГЁГЄГ«ГѕГ·ГЁГµГІГҐ Г± ГЁГ§ГўГҐГ¦Г¤Г Г­ГҐГІГ®." << endl;
 				break;
 			}
 
 
 		}
 	}
-	//същото правя и за спец. КСТ
-	else if (s == "КСТ") {
+	
+	else if (s == "ГЉГ‘Г’") {
 		int y = 0;
 
 		while (y < k) {
@@ -1820,23 +1810,23 @@ void output(int i, int k, student studSIT[], student studKST[]) {
 				if (y >= k) {
 					break;
 				}
-				cout << "Специалност:";
+				cout << "Г‘ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ:";
 				cout << studKST[y].specialnost << endl;
-				cout << "Име и фамилия:";
+				cout << "Г€Г¬ГҐ ГЁ ГґГ Г¬ГЁГ«ГЁГї:";
 				cout << studKST[y].ime << endl;
-				cout << "Факултетен номер:";
+				cout << "Г”Г ГЄГіГ«ГІГҐГІГҐГ­ Г­Г®Г¬ГҐГ°:";
 				cout << studKST[y].faknomer << endl;
-				cout << "Месец и година на раждане (формат месец.година):";
+				cout << "ГЊГҐГ±ГҐГ¶ ГЁ ГЈГ®Г¤ГЁГ­Г  Г­Г  Г°Г Г¦Г¤Г Г­ГҐ (ГґГ®Г°Г¬Г ГІ Г¬ГҐГ±ГҐГ¶.ГЈГ®Г¤ГЁГ­Г ):";
 				cout << studKST[y].mesec << "." << studKST[y].godina << endl;
-				cout << "Оценка по математика:";
+				cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® Г¬Г ГІГҐГ¬Г ГІГЁГЄГ :";
 				cout << studKST[y].mat << endl;
-				cout << "Оценка по БП:";
+				cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГЃГЏ:";
 				cout << studKST[y].bp << endl;
-				cout << "Оценка по физическо:";
+				cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГґГЁГ§ГЁГ·ГҐГ±ГЄГ®:";
 				cout << studKST[y].fiz << endl;
-				cout << "Оценка по УЕБ:";
+				cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® Г“Г…ГЃ:";
 				cout << studKST[y].web << endl;
-				cout << "Оценка по електроника:";
+				cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® ГҐГ«ГҐГЄГІГ°Г®Г­ГЁГЄГ :";
 				cout << studKST[y].el << endl;
 				cout << endl;
 				y++;
@@ -1845,7 +1835,7 @@ void output(int i, int k, student studSIT[], student studKST[]) {
 				break;
 			}
 
-			cout << "Въведете n за да отидете на следващата страница, или какъвто и да е смивол освен n, за да приключите с извеждането:";
+			cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ n Г§Г  Г¤Г  Г®ГІГЁГ¤ГҐГІГҐ Г­Г  Г±Г«ГҐГ¤ГўГ Г№Г ГІГ  Г±ГІГ°Г Г­ГЁГ¶Г , ГЁГ«ГЁ ГЄГ ГЄГєГўГІГ® ГЁ Г¤Г  ГҐ Г±Г¬ГЁГўГ®Г« Г®Г±ГўГҐГ­ n, Г§Г  Г¤Г  ГЇГ°ГЁГЄГ«ГѕГ·ГЁГІГҐ Г± ГЁГ§ГўГҐГ¦Г¤Г Г­ГҐГІГ®:";
 			string s1;
 			cin >> s1;
 
@@ -1853,106 +1843,106 @@ void output(int i, int k, student studSIT[], student studKST[]) {
 				continue;
 			}
 			else {
-				cout << "Вие приключихте с извеждането." << endl;
+				cout << "Г‚ГЁГҐ ГЇГ°ГЁГЄГ«ГѕГ·ГЁГµГІГҐ Г± ГЁГ§ГўГҐГ¦Г¤Г Г­ГҐГІГ®." << endl;
 				break;
 			}
 		}
 	}
-	//ако въведената специалност не съществува, фунцкяита се стартира отначало
+	
 	else {
-		cout << "Въведете валидна специалност." << endl;
+		cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ ГўГ Г«ГЁГ¤Г­Г  Г±ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ." << endl;
 		output(i, k, studSIT, studKST);
 	}
 }
 
-//въвеждане на само 1 студент
+
 void enterOneStudent(int& i, int& k, student studSIT[], student studKST[]) {
-	cout << "Въведете специалност на студента (СИТ или КСТ): " << endl;
+	cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г±ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ Г­Г  Г±ГІГіГ¤ГҐГ­ГІГ  (Г‘Г€Г’ ГЁГ«ГЁ ГЉГ‘Г’): " << endl;
 	string s;
 
 	cin >> s;
-	//въвежда се специалността и за дадената специалност полетата се записват в съответния масив
-	if (s == "СИТ") {
+	
+	if (s == "Г‘Г€Г’") {
 		if (i < 30) {
 
 
 			studSIT[i].specialnost = s;
 			cin.ignore();
-			cout << "Въведете име и фамилия: ";
+			cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ ГЁГ¬ГҐ ГЁ ГґГ Г¬ГЁГ«ГЁГї: ";
 			getline(cin, studSIT[i].ime);
-			cout << "Въведете факултетен номер:";
+			cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ ГґГ ГЄГіГ«ГІГҐГІГҐГ­ Г­Г®Г¬ГҐГ°:";
 			cin >> studSIT[i].faknomer;
-			cout << "Въведете година на раждане:";
+			cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ ГЈГ®Г¤ГЁГ­Г  Г­Г  Г°Г Г¦Г¤Г Г­ГҐ:";
 			cin >> studSIT[i].godina;
-			cout << "Въведете месец на раждане с цифри (например за януари въведете 1, за февруари 2 и т.н.) :";
+			cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г¬ГҐГ±ГҐГ¶ Г­Г  Г°Г Г¦Г¤Г Г­ГҐ Г± Г¶ГЁГґГ°ГЁ (Г­Г ГЇГ°ГЁГ¬ГҐГ° Г§Г  ГїГ­ГіГ Г°ГЁ ГўГєГўГҐГ¤ГҐГІГҐ 1, Г§Г  ГґГҐГўГ°ГіГ Г°ГЁ 2 ГЁ ГІ.Г­.) :";
 			cin >> studSIT[i].mesec;
-			cout << "Въведете оценка по математика: ";
+			cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г®Г¶ГҐГ­ГЄГ  ГЇГ® Г¬Г ГІГҐГ¬Г ГІГЁГЄГ : ";
 			cin >> studSIT[i].mat;
-			cout << "Въведете оценка по БП: ";
+			cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г®Г¶ГҐГ­ГЄГ  ГЇГ® ГЃГЏ: ";
 			cin >> studSIT[i].bp;
-			cout << "Въведете оценка по физическо: ";
+			cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г®Г¶ГҐГ­ГЄГ  ГЇГ® ГґГЁГ§ГЁГ·ГҐГ±ГЄГ®: ";
 			cin >> studSIT[i].fiz;
-			cout << "Въведете оценка по УЕБ: ";
+			cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г®Г¶ГҐГ­ГЄГ  ГЇГ® Г“Г…ГЃ: ";
 			cin >> studSIT[i].web;
-			cout << "Въведете оценка по електроника: ";
+			cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г®Г¶ГҐГ­ГЄГ  ГЇГ® ГҐГ«ГҐГЄГІГ°Г®Г­ГЁГЄГ : ";
 			cin >> studSIT[i].el;
 			i++;
 		}
 		else {
-			cout << "Специалност СИТ вече има 30 ученици." << endl;
+			cout << "Г‘ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ Г‘Г€Г’ ГўГҐГ·ГҐ ГЁГ¬Г  30 ГіГ·ГҐГ­ГЁГ¶ГЁ." << endl;
 
 		}
 	}
-	else if (s == "КСТ") {
+	else if (s == "ГЉГ‘Г’") {
 		if (k < 30) {
 
 
 			studKST[k].specialnost = s;
 			cin.ignore();
-			cout << "Въведете име и фамилия: ";
+			cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ ГЁГ¬ГҐ ГЁ ГґГ Г¬ГЁГ«ГЁГї: ";
 			getline(cin, studKST[i].ime);
-			cout << "Въведете факултетен номер:";
+			cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ ГґГ ГЄГіГ«ГІГҐГІГҐГ­ Г­Г®Г¬ГҐГ°:";
 			cin >> studKST[k].faknomer;
-			cout << "Въведете година на раждане:";
+			cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ ГЈГ®Г¤ГЁГ­Г  Г­Г  Г°Г Г¦Г¤Г Г­ГҐ:";
 			cin >> studKST[k].godina;
-			cout << "Въведете месец на раждане с цифри (например за януари въведете 1, за февруари 2 и т.н.) :";
+			cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г¬ГҐГ±ГҐГ¶ Г­Г  Г°Г Г¦Г¤Г Г­ГҐ Г± Г¶ГЁГґГ°ГЁ (Г­Г ГЇГ°ГЁГ¬ГҐГ° Г§Г  ГїГ­ГіГ Г°ГЁ ГўГєГўГҐГ¤ГҐГІГҐ 1, Г§Г  ГґГҐГўГ°ГіГ Г°ГЁ 2 ГЁ ГІ.Г­.) :";
 			cin >> studKST[k].mesec;
-			cout << "Въведете оценка по математика: ";
+			cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г®Г¶ГҐГ­ГЄГ  ГЇГ® Г¬Г ГІГҐГ¬Г ГІГЁГЄГ : ";
 			cin >> studKST[k].mat;
-			cout << "Въведете оценка по БП: ";
+			cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г®Г¶ГҐГ­ГЄГ  ГЇГ® ГЃГЏ: ";
 			cin >> studKST[k].bp;
-			cout << "Въведете оценка по физическо: ";
+			cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г®Г¶ГҐГ­ГЄГ  ГЇГ® ГґГЁГ§ГЁГ·ГҐГ±ГЄГ®: ";
 			cin >> studKST[k].fiz;
-			cout << "Въведете оценка по УЕБ: ";
+			cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г®Г¶ГҐГ­ГЄГ  ГЇГ® Г“Г…ГЃ: ";
 			cin >> studKST[k].web;
-			cout << "Въведете оценка по електроника: ";
+			cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ Г®Г¶ГҐГ­ГЄГ  ГЇГ® ГҐГ«ГҐГЄГІГ°Г®Г­ГЁГЄГ : ";
 			cin >> studKST[k].el;
 			k++;
 		}
 		else {
-			cout << "Специалност КСТ вече има 30 ученици." << endl;
+			cout << "Г‘ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ ГЉГ‘Г’ ГўГҐГ·ГҐ ГЁГ¬Г  30 ГіГ·ГҐГ­ГЁГ¶ГЁ." << endl;
 		}
 
 	}
-	//ако въведената специалност не съществува, функцията се стартира наново
+	
 	else {
-		cout << "Въведете валидна специалност." << endl;
+		cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ ГўГ Г«ГЁГ¤Г­Г  Г±ГЇГҐГ¶ГЁГ Г«Г­Г®Г±ГІ." << endl;
 		enterOneStudent(i, k, studSIT, studKST);
 	}
 
 }
 
-//функция за избор от менюто
+
 int entry() {
 	int n = 0;
 	while (true) {
-		//докато не се въведе валиден номер, фунцкията връща потребителя към въвеждането
-		cout << "Вашият избор:";
+		
+		cout << "Г‚Г ГёГЁГїГІ ГЁГ§ГЎГ®Г°:";
 		cin >> n;
 		if (n < 1 || n>15) {
-			cout << "Въведете валиден номер" << endl;
+			cout << "Г‚ГєГўГҐГ¤ГҐГІГҐ ГўГ Г«ГЁГ¤ГҐГ­ Г­Г®Г¬ГҐГ°" << endl;
 		}
-		//ако номера е валиден, той се връща към main функцията
+		
 		else {
 			return n;
 		}
@@ -1964,10 +1954,7 @@ int entry() {
 }
 
 
-//const int PI 3.14
-//#define PI 3.14
-//#define служи компилаторът да замени препратките към съответната константа с определената стойност(3.14) по време на компилиране.
-//cout<<hex<<10;
+
 
 
 
